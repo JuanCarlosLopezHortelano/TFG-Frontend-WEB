@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { useAuthenticator } from "@aws-amplify/ui-react";
-import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./commons/NavigationBar";
 import { Footer } from "./commons/Footer";
 import HomePage from "./pages/Home/HomePage";
-import MyProfile, { ProfilePage } from "./pages/MyProfile/MyProfilePage";
+import  { ProfilePage } from "./pages/MyProfile/MyProfilePage";
 /*
 // Ejemplos de componentes para cada sección
 function HomePage() {
@@ -62,7 +61,8 @@ function PerfilPage() {
 }
 
 function App() {
-  const { signOut } = useAuthenticator();
+
+  //const { signOut } = useAuthenticator();
 
   return (
     <Router>
@@ -80,8 +80,8 @@ function App() {
           </Routes>
         </div>
         <Footer />
-       
-         
+  
+    
       </div>
     </Router>
   );
