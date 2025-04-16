@@ -1,137 +1,113 @@
+// src/commons/NavBar.tsx
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AiFillHome, AiOutlineSearch, AiOutlinePlusSquare } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
+import { MdDescription } from "react-icons/md";
+import { RiDashboardLine } from "react-icons/ri";
 
-import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+export default function NavBar() {
+  const navigate = useNavigate();
 
+  return (
+    <header style={styles.header}>
+      {/* Logo */}
+      <div style={styles.logo} onClick={() => navigate("/")}>
+        TaskIo
+      </div>
 
+      {/* Barra de búsqueda */}
+      <div style={styles.searchContainer}>
+        <AiOutlineSearch size={20} style={{ marginRight: 8, color: "#888" }} />
+        <input
+          type="text"
+          placeholder="Buscar..."
+          style={styles.searchInput}
+        />
+      </div>
 
-
-// Componente de la barra de navegación usando NavLink para resaltar el enlace activo
-
-
-export function NavigationBar() {
-    return (
-      <nav style={styles.navBar}>
-        <ul style={styles.navList}>
-          <li>
-            <NavLink
-              to="/"
-              style={({ isActive }: { isActive: boolean }) =>
-                isActive ? { ...styles.navItem, ...styles.navItemActive } : styles.navItem
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/mispostulaciones"
-              style={({ isActive }: { isActive: boolean }) =>
-                isActive ? { ...styles.navItem, ...styles.navItemActive } : styles.navItem
-              }
-            >
-              MisPostulaciones
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/trabajosrequeridos"
-              style={({ isActive }: { isActive: boolean }) =>
-                isActive ? { ...styles.navItem, ...styles.navItemActive } : styles.navItem
-              }
-            >
-              Trabajos Requeridos
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/creatrabajo"
-              style={({ isActive }: { isActive: boolean }) =>
-                isActive ? { ...styles.navItem, ...styles.navItemActive } : styles.navItem
-              }
-            >
-              Crear Trabajo
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/buscador"
-              style={({ isActive }: { isActive: boolean }) =>
-                isActive ? { ...styles.navItem, ...styles.navItemActive } : styles.navItem
-              }
-            >
-              Buscador
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/perfil"
-              style={({ isActive }: { isActive: boolean }) =>
-                isActive ? { ...styles.navItem, ...styles.navItemActive } : styles.navItem
-              }
-            >
-              Perfil
-            </NavLink>
-          </li>
-        </ul>
+      {/* Iconos de navegación */}
+      <nav style={styles.iconNav}>
+        <NavLink to="/" style={styles.iconLink} end>
+          <AiFillHome size={24} />
+          <span style={styles.iconLabel}>Inicio</span>
+        </NavLink>
+        <NavLink to="/mispostulaciones" style={styles.iconLink}>
+          <MdDescription size={24} />
+          <span style={styles.iconLabel}>Postulaciones</span>
+        </NavLink>
+        <NavLink to="/perfil" style={styles.iconLink}>
+          <FaUserCircle size={24} />
+          <span style={styles.iconLabel}>Perfil</span>
+        </NavLink>
+        <NavLink to="/buscador" style={styles.iconLink}>
+          <AiOutlineSearch size={24} />
+          <span style={styles.iconLabel}>Buscar</span>
+        </NavLink>
+        <NavLink to="/creatrabajo" style={styles.iconLink}>
+          <AiOutlinePlusSquare size={24} />
+          <span style={styles.iconLabel}>Crear</span>
+        </NavLink>
+        <NavLink to="/index" style={styles.iconLink}>
+          <RiDashboardLine size={24} />
+          <span style={styles.iconLabel}>Index</span>
+        </NavLink>
       </nav>
-    );
-  }
+    </header>
+  );
+}
 
-// Algunos estilos básicos (ajústalos para conseguir el efecto deseado)
-const styles = {
-  appContainer: {
-    fontFamily: "Arial, sans-serif",
-    minHeight: "100vh",
+const styles: { [k: string]: React.CSSProperties } = {
+  header: {
     display: "flex",
-    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",      // <-- Centra todos los hijos
+    background: "#ffffff",
+    padding: "8px 16px",
+    boxShadow: "8px 8px 16px #ebebeb, -8px -8px 16px #ffffff",
+    gap: "32px",                    // <-- Espacio uniforme entre cada bloque
   },
-  navBar: {
-    background: "#e0e0e0",
-    padding: "10px 20px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
-  },
-  navList: {
-    listStyle: "none",
-    display: "flex",
-    gap: "20px",
-    margin: 0,
-    padding: 0,
-  },
-  navItem: {
+  logo: {
+    fontSize: "1.25rem",
+    fontWeight: "bold",
     cursor: "pointer",
-    padding: "5px 10px",
-    borderRadius: "8px",
-    transition: "background 0.3s",
-    textDecoration: "none",
-    color: "inherit",
+    color: "#333",
   },
-  navItemActive: {
-    background: "#d0d0d0",
+  searchContainer: {
+    display: "flex",
+    alignItems: "center",
+    background: "#ffffff",
+    borderRadius: "20px",
+    padding: "4px 12px",
+    boxShadow: "inset 4px 4px 8px #ebebeb, inset -4px -4px 8px #ffffff",
+    width: "300px",
+    marginRight: "60px"
   },
-  contentArea: {
-    flex: 1,
-    padding: "20px",
-    background: "#f0f0f3",
-  },
-  pageContainer: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 60px #bebebe, -20px -20px 60px #ffffff",
-    padding: "20px",
-    margin: "20px auto",
-    maxWidth: "800px",
-  },
-  footer: {
-    padding: "10px",
-    textAlign: "center" ,
-    background: "#e0e0e0",
-  },
-  signOutButton: {
-    background: "#e0e0e0",
+  searchInput: {
     border: "none",
     outline: "none",
-    padding: "10px 20px",
+    flex: 1,
+    fontSize: "1rem",
+    background: "transparent",
+  },
+  iconNav: {
+    display: "flex",
+    gap: "24px",
+    alignItems: "center",
+    // marginLeft removed para que no empuje al final
+  },
+  iconLink: {
+    display: "flex",
+    flexDirection: "column" ,
+    alignItems: "center",
+    textDecoration: "none",
+    color: "#555",
+    padding: "4px",
     borderRadius: "8px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
-    cursor: "pointer",
+    transition: "background 0.2s",
+  },
+  iconLabel: {
+    fontSize: "0.7rem",
+    marginTop: "4px",
   },
 };

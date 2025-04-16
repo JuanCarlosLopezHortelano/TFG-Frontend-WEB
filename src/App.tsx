@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
-import { NavigationBar } from "./commons/NavigationBar";
+import NavBar from "./commons/NavigationBar";
 import { Footer } from "./commons/Footer";
-
+import HomePage from "./pages/Home/HomePage";
+import MyProfile, { ProfilePage } from "./pages/MyProfile/MyProfilePage";
+/*
 // Ejemplos de componentes para cada sección
 function HomePage() {
   return (
@@ -13,7 +15,7 @@ function HomePage() {
     </div>
   );
 }
-
+*/
 function MisPostulacionesPage() {
   return (
     <div style={styles.pageContainer}>
@@ -65,7 +67,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <NavigationBar />
+        <NavBar />
         <div className="content-area">
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -74,6 +76,7 @@ function App() {
             <Route path="/creatrabajo" element={<CrearTrabajoPage />} />
             <Route path="/buscador" element={<BuscadorPage />} />
             <Route path="/perfil" element={<PerfilPage />} />
+            <Route path="/myProfile" element={<ProfilePage />} />
           </Routes>
         </div>
         <Footer />
@@ -92,29 +95,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
   },
-  navBar: {
-    background: "#e0e0e0",
-    padding: "10px 20px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
-  },
-  navList: {
-    listStyle: "none",
-    display: "flex",
-    gap: "20px",
-    margin: 0,
-    padding: 0,
-  },
-  navItem: {
-    cursor: "pointer",
-    padding: "5px 10px",
-    borderRadius: "8px",
-    transition: "background 0.3s",
-    textDecoration: "none",
-    color: "inherit",
-  },
-  navItemActive: {
-    background: "#d0d0d0",
-  },
+  
   contentArea: {
     flex: 1,
     padding: "20px",
