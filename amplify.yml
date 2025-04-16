@@ -35,3 +35,8 @@ test:
     test:
       commands:
         - echo "esta etapa es test"
+  artifacts:
+    baseDirectory: ./        # puede apuntar al root o a cualquier carpeta existente
+    files:
+      - '**/*'               # patrón que cubra al menos un archivo
+
