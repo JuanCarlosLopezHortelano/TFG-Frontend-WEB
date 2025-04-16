@@ -18,7 +18,7 @@ function HomePage() {
 function MisPostulacionesPage() {
   return (
     <div style={styles.pageContainer}>
-      <h1>Mis Postulaciones</h1>
+      <h1>Pruebas</h1>
       <p>Aquí verás tus postulaciones a trabajos.</p>
     </div>
   );
