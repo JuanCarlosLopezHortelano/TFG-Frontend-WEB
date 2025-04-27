@@ -1,50 +1,60 @@
-import { Button, Descriptions, message } from 'antd';
-import { SaveOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
-import { useWizard } from '../TaskDraftContext';
-
-/*  Si vas a usar Amplify DataStore / GraphQL, importa tu client aquí */
-// import { generateClient } from 'aws-amplify/data';
-// const client = generateClient<Schema>();
+// src/pages/CreateTask/steps/Step4Review.tsx
+import { Button, Descriptions, Alert, message } from 'antd';
+import { SaveOutlined }         from '@ant-design/icons';
+import { useNavigate }          from 'react-router-dom';
+import { useAuthenticator }     from '@aws-amplify/ui-react';
+import { useWizard }            from '../TaskDraftContext';
+import { useCreateTask }        from  '../hooks/useCreateTask';
 
 export default function Step4Review() {
-  const { draft, setDraft } = useWizard();
-  const nav = useNavigate();
+  const { draft, setDraft }       = useWizard();
+  const { user }                  = useAuthenticator();          // Amplify Auth
+  const { execute, loading, error } = useCreateTask(user.username);
+  const nav                       = useNavigate();
 
-  async function publish() {
+  const publish = async () => {
+    // ←— aquí añadimos un console.log para depuración
+    console.log('🚀 Publicando draft en frontend:', draft);
+    console.log(' User:', user.username);
+    console.log(' User ID:', user);
+
+
     try {
-      // --- GRABAR en backend ---
-      // await client.models.Job.create({ ...draft, status: 'open', createdAt: new Date().toISOString() });
-      console.log('Publicado', draft);
+      await execute(draft);
       message.success('Tarea publicada');
       setDraft({});
-      nav('/mis-ofertas');
-    } catch (err) {
-      message.error('Error publicando');
-      console.error(err);
+      nav('/trabajosrequeridos');
+    } catch {
+      // El hook ya volcará error en pantalla
     }
-  }
+  };
 
   return (
     <>
-      <h3 className="text-lg font-semibold mb-4">Revisar datos</h3>
+      <h3 style={{ marginBottom: 16 }}>Revisar datos</h3>
+      {error && <Alert type="error" message={error} style={{ marginBottom: 16 }} />}
 
       <Descriptions bordered column={1}>
         <Descriptions.Item label="Título">{draft.title}</Descriptions.Item>
         <Descriptions.Item label="Categoría">{draft.category}</Descriptions.Item>
-        <Descriptions.Item label="Tarifa">{draft.rate}€/h</Descriptions.Item>
+        <Descriptions.Item label="Tarifa">{draft.rate} €/h</Descriptions.Item>
         <Descriptions.Item label="Duración">{draft.duration}</Descriptions.Item>
         <Descriptions.Item label="Zona">
           {draft.area ? 'Zona seleccionada' : '—'}
         </Descriptions.Item>
         <Descriptions.Item label="Fecha">
-          {draft.isFlexible ? 'Flexible' : draft.date}
+          {draft.isFlexible ? 'Flexible' : draft.date?.toLocaleString() || '—'}
         </Descriptions.Item>
       </Descriptions>
 
-      <div className="flex justify-between mt-6">
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 24 }}>
         <Button onClick={() => nav('../step-3')}>Atrás</Button>
-        <Button type="primary" icon={<SaveOutlined />} onClick={publish}>
+        <Button
+          type="primary"
+          icon={<SaveOutlined />}
+          loading={loading}
+          onClick={publish}
+        >
           Publicar
         </Button>
       </div>

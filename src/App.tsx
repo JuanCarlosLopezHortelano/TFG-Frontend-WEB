@@ -105,42 +105,6 @@ function App() {
   );
 }
 
-// Algunos estilos básicos (ajústalos para conseguir el efecto deseado)
-const styles = {
-  appContainer: {
-    fontFamily: "Arial, sans-serif",
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-  },
-  
-  contentArea: {
-    flex: 1,
-    padding: "20px",
-    background: "#f0f0f3",
-  },
-  pageContainer: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 60px #bebebe, -20px -20px 60px #ffffff",
-    padding: "20px",
-    margin: "20px auto",
-    maxWidth: "800px",
-  },
-  footer: {
-    padding: "10px",
-    textAlign: "center" ,
-    background: "#e0e0e0",
-  },
-  signOutButton: {
-    background: "#e0e0e0",
-    border: "none",
-    outline: "none",
-    padding: "10px 20px",
-    borderRadius: "8px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
-    cursor: "pointer",
-  },
-};
+
 
 export default App;

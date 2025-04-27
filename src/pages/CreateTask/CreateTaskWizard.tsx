@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Steps } from "antd";
 import Step1Basics   from "./steps/Step1Basics";
 import Step2Location from "./steps/Step2Location";
@@ -14,7 +14,7 @@ export default function CreateTaskWizard() {
   return (
     <div style={{ maxWidth: 720, margin: "40px auto" }}>
       <Steps current={current === -1 ? 0 : current}
-             items={[{title:"Básicos"},{title:"Zona"},{title:"Fecha"},{title:"Revisar"}]} />
+            items={[{title:"Básicos"},{title:"Zona"},{title:"Fecha"},{title:"Revisar"}]} />
       <div style={{ marginTop: 32, background:"#fff", padding:32, borderRadius:20 }}>
         <Routes>
           <Route index      element={<Navigate to="step-1" />} />
