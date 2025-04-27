@@ -4,6 +4,12 @@ import NavBar from "./commons/NavigationBar";
 import { Footer } from "./commons/Footer";
 import HomePage from "./pages/Home/HomePage";
 import  { ProfilePage } from "./pages/MyProfile/MyProfilePage";
+import SearchPage from "./pages/Home copy/SearchPage";
+import CreateTaskWizard from "./pages/CreateTask/CreateTaskWizard";
+import { WizardProvider } from "./pages/CreateTask/TaskDraftContext"; // Adjust the path as needed
+import MisPostulacionesPage from "./pages/MisPostulacionesPage/MisPostulacionesPage";
+import TrabajosRequeridosPage from "./pages/TrabajosRequeridos/TrabajosRequeridosPage";
+
 /*
 // Ejemplos de componentes para cada sección
 function HomePage() {
@@ -15,6 +21,7 @@ function HomePage() {
   );
 }
 */
+/*
 function MisPostulacionesPage() {
   return (
     <div style={styles.pageContainer}>
@@ -23,7 +30,9 @@ function MisPostulacionesPage() {
     </div>
   );
 }
+*/
 
+/*
 function TrabajosRequeridosPage() {
   return (
     <div style={styles.pageContainer}>
@@ -33,6 +42,9 @@ function TrabajosRequeridosPage() {
   );
 }
 
+*/
+
+/*
 function CrearTrabajoPage() {
   return (
     <div style={styles.pageContainer}>
@@ -41,6 +53,8 @@ function CrearTrabajoPage() {
     </div>
   );
 }
+*/
+/*
 
 function BuscadorPage() {
   return (
@@ -50,7 +64,9 @@ function BuscadorPage() {
     </div>
   );
 }
-
+*/
+// Ejemplo de componente para la página de perfil
+/*
 function PerfilPage() {
   return (
     <div style={styles.pageContainer}>
@@ -59,30 +75,32 @@ function PerfilPage() {
     </div>
   );
 }
+*/
 
 function App() {
-
-  //const { signOut } = useAuthenticator();
-
   return (
     <Router>
-      <div className="app-container">
-        <NavBar />
-        <div className="content-area">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/mispostulaciones" element={<MisPostulacionesPage />} />
-            <Route path="/trabajosrequeridos" element={<TrabajosRequeridosPage />} />
-            <Route path="/creatrabajo" element={<CrearTrabajoPage />} />
-            <Route path="/buscador" element={<BuscadorPage />} />
-            <Route path="/perfil" element={<PerfilPage />} />
-            <Route path="/myProfile" element={<ProfilePage />} />
-          </Routes>
-        </div>
-        <Footer />
-  
-    
+      <NavBar />                     {/* el NavBar fuera de Routes */}
+      <div className="content-area">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/postulaciones" element={<MisPostulacionesPage />} />
+          <Route path="/trabajosrequeridos" element={<TrabajosRequeridosPage />} />
+          <Route path="/buscador" element={<SearchPage />} />
+          <Route path="/perfil" element={<ProfilePage />} />
+
+          {/* Wizard multi‑step */}
+          <Route
+                path="/creartarea/*"
+                element={
+                  <WizardProvider>
+                    <CreateTaskWizard />
+                  </WizardProvider>
+                }
+              />
+        </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }

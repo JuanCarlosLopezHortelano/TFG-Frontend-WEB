@@ -1,5 +1,4 @@
 // src/commons/NavBar.tsx
-import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AiFillHome, AiOutlineSearch, AiOutlinePlusSquare } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
@@ -36,21 +35,22 @@ export default function NavBar() {
           <MdDescription size={24} />
           <span style={styles.iconLabel}>Postulaciones</span>
         </NavLink>
-        <NavLink to="/perfil" style={styles.iconLink}>
-          <FaUserCircle size={24} />
-          <span style={styles.iconLabel}>Perfil</span>
-        </NavLink>
+        
         <NavLink to="/buscador" style={styles.iconLink}>
           <AiOutlineSearch size={24} />
           <span style={styles.iconLabel}>Buscar</span>
         </NavLink>
-        <NavLink to="/creatrabajo" style={styles.iconLink}>
+        <NavLink to="/creartarea/step-1" style={styles.iconLink}>
           <AiOutlinePlusSquare size={24} />
           <span style={styles.iconLabel}>Crear</span>
         </NavLink>
         <NavLink to="/index" style={styles.iconLink}>
           <RiDashboardLine size={24} />
           <span style={styles.iconLabel}>Index</span>
+        </NavLink>
+        <NavLink to="/perfil" style={styles.iconLink}>
+          <FaUserCircle size={24} />
+          <span style={styles.iconLabel}>Perfil</span>
         </NavLink>
       </nav>
     </header>

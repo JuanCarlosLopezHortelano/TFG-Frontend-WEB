@@ -1,62 +1,57 @@
-import React from "react";
+// src/pages/Home/HomePage.tsx
+import { CSSProperties } from "react";
 
-function HomePage() {
+export default function HomePage() {
   return (
-    <div style={styles.container}>
-      
-
-      {/* Contenido principal */}
-      <main style={styles.mainContent}>
-        {/* Sección izquierda: Categorías y trabajos destacados */}
-        <section style={styles.leftSection}>
-          <div style={styles.categoriesContainer}>
-            <h2 style={styles.sectionTitle}>Categorías</h2>
-            <div style={styles.chipContainer}>
-              <div style={styles.chip}>Limpieza</div>
-              <div style={styles.chip}>Mudanzas</div>
-              <div style={styles.chip}>Jardinería</div>
-              <div style={styles.chip}>Reparaciones</div>
-              {/* Agrega más categorías según necesites */}
+    <div style={styles.pageWrapper}>
+      <main style={styles.feed}>
+        {/* Izquierda */}
+        <section style={styles.leftCol}>
+          <div style={styles.card}>
+            <h2 style={styles.title}>Categorías</h2>
+            <div style={styles.chipRow}>
+              {["Limpieza","Mudanzas","Jardinería","Reparaciones"].map(c => (
+                <span key={c} style={styles.chip}>{c}</span>
+              ))}
             </div>
           </div>
 
-          <div style={styles.featuredJobs}>
-            <h2 style={styles.sectionTitle}>Trabajos Destacados</h2>
-            <div style={styles.jobCard}>Limpieza de oficina - Sur (15€/h)</div>
-            <div style={styles.jobCard}>Ayudante de niños - Este (10€/h)</div>
-            <div style={styles.jobCard}>Jardinero - Oeste (12€/h)</div>
-            <div style={styles.jobCard}>Aprua alacs (??)</div>
-            {/* Botón o link de ver más */}
-            <button style={styles.seeMoreButton}>Ver más</button>
+          <div style={styles.card}>
+            <h2 style={styles.title}>Trabajos Destacados</h2>
+            {["Limpieza de oficina - Sur (15€/h)",
+              "Ayudante de niños - Este (10€/h)",
+              "Jardinero - Oeste (12€/h)",
+              "Aprua alacs (??)"].map(job => (
+              <div key={job} style={styles.lineItem}>{job}</div>
+            ))}
+            <button style={styles.moreBtn}>Ver más</button>
           </div>
 
-          {/* Comentarios a tareas resueltas */}
-          <div style={styles.commentsSection}>
-            <h2 style={styles.sectionTitle}>Comentarios Recientes</h2>
-            <div style={styles.commentCard}>
-              <p style={styles.commentText}>
-                "Great service for finding local jobs"
-              </p>
-            </div>
-            <div style={styles.commentCard}>
-              <p style={styles.commentText}>
-                "Excelente para trabajos eventuales"
-              </p>
-            </div>
+          <div style={styles.card}>
+            <h2 style={styles.title}>Comentarios Recientes</h2>
+            {[
+              "Great service for finding local jobs",
+              "Excelente para trabajos eventuales"
+            ].map(c => (
+              <div key={c} style={styles.lineItem}>{`"${c}"`}</div>
+            ))}
           </div>
         </section>
 
-        {/* Sección derecha: Top Jobs, Top Workers */}
-        <aside style={styles.rightSection}>
-          <div style={styles.topJobs}>
-            <h3 style={styles.sectionTitle}>Top Jobs</h3>
-            <div style={styles.sidebarCard}>Adipiscing elit</div>
-            <div style={styles.sidebarCard}>Sed do eiusmod</div>
+        {/* Derecha */}
+        <aside style={styles.rightCol}>
+          <div style={styles.card}>
+            <h3 style={styles.title}>Top Jobs</h3>
+            {["Adipiscing elit","Sed do eiusmod"].map(j => (
+              <div key={j} style={styles.lineItem}>{j}</div>
+            ))}
           </div>
-          <div style={styles.topWorkers}>
-            <h3 style={styles.sectionTitle}>Top Workers</h3>
-            <div style={styles.sidebarCard}>Lead 1</div>
-            <div style={styles.sidebarCard}>Lead 2</div>
+
+          <div style={styles.card}>
+            <h3 style={styles.title}>Top Workers</h3>
+            {["Lead 1","Lead 2"].map(w => (
+              <div key={w} style={styles.lineItem}>{w}</div>
+            ))}
           </div>
         </aside>
       </main>
@@ -64,164 +59,67 @@ function HomePage() {
   );
 }
 
-// Estilos base (neumórficos)
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
+/* ---------- Estilos ---------- */
+const styles: Record<string, CSSProperties> = {
+  /* Fondo global gris clarísimo */
+  pageWrapper: {
+    background: "#f5f6f7",
     minHeight: "100vh",
-    background: "#f1f1f1",
-    fontFamily: "Arial, sans-serif",
-  },
-  navbar: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    background: "#e0e0e0",
-    padding: "10px 20px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
-  },
-  logo: {
-    fontSize: "1.5rem",
-    fontWeight: "bold",
-    cursor: "pointer",
-  },
-  searchWrapper: {
-    flex: 1,
-    marginLeft: "20px",
-    marginRight: "20px",
-  },
-  searchInput: {
-    width: "100%",
-    padding: "8px 12px",
-    borderRadius: "10px",
-    border: "none",
-    boxShadow: "inset 3px 3px 5px #bebebe, inset -3px -3px 5px #ffffff",
-    outline: "none",
-  },
-  navIcons: {
-    display: "flex",
-    alignItems: "center",
-    gap: "15px",
-  },
-  navItem: {
-    position: "relative",
-    padding: "5px 10px",
-    borderRadius: "10px",
-    cursor: "pointer",
-    fontSize: "0.9rem",
-    boxShadow: "3px 3px 5px #bebebe, -3px -3px 5px #ffffff",
-  },
-  profile: {
-    display: "flex",
-    alignItems: "center",
-  },
-  profileImg: {
-    width: "32px",
-    height: "32px",
-    borderRadius: "50%",
+    paddingTop: "48px",
   },
 
-  mainContent: {
-    flex: 1,
+  /* Feed centrado */
+  feed: {
+    maxWidth: "1200px",
+    margin: "0 auto",
     display: "flex",
-    flexDirection: "row",
-    padding: "20px",
-    gap: "20px",
+    gap: "32px",
+    padding: "0 24px",
   },
-  leftSection: {
-    flex: 3,
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-  },
-  categoriesContainer: {
-    background: "#e0e0e0",
+
+  /* Columnas */
+  leftCol: { flex: 3, display: "flex", flexDirection: "column", gap: "32px" },
+  rightCol: { flex: 1, display: "flex", flexDirection: "column", gap: "32px" },
+
+  /* Tarjeta neumórfica blanca */
+  card: {
+    background: "#ffffff",
     borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
-    padding: "20px",
+    boxShadow: "8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff",
+    padding: "24px",
   },
-  chipContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "10px",
-    marginTop: "10px",
-  },
+
+  /* Chips categoría */
+  chipRow: { display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "12px" },
   chip: {
-    background: "#e0e0e0",
-    padding: "8px 12px",
-    borderRadius: "8px",
-    boxShadow: "4px 4px 8px #bebebe, -4px -4px 8px #ffffff",
+    background: "#ffffff",
+    padding: "6px 14px",
+    borderRadius: "12px",
+    boxShadow: "4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff",
     cursor: "pointer",
+    fontSize: "0.85rem",
   },
-  featuredJobs: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
-    padding: "20px",
-  },
-  jobCard: {
-    background: "#e0e0e0",
-    margin: "10px 0",
-    padding: "10px",
-    borderRadius: "8px",
-    boxShadow: "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
-  },
-  seeMoreButton: {
-    marginTop: "10px",
-    padding: "8px 16px",
-    borderRadius: "8px",
-    background: "#e0e0e0",
-    border: "none",
-    boxShadow: "4px 4px 8px #bebebe, -4px -4px 8px #ffffff",
-    cursor: "pointer",
-  },
-  commentsSection: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
-    padding: "20px",
-  },
-  commentCard: {
-    background: "#e0e0e0",
-    margin: "10px 0",
-    padding: "10px",
-    borderRadius: "8px",
-    boxShadow: "4px 4px 8px #bebebe, -4px -4px 8px #ffffff",
-  },
-  commentText: {
-    margin: 0,
-  },
-  rightSection: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-  },
-  topJobs: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
-    padding: "20px",
-  },
-  sidebarCard: {
-    background: "#e0e0e0",
-    margin: "10px 0",
-    padding: "10px",
-    borderRadius: "8px",
-    boxShadow: "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
-  },
-  topWorkers: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
-    padding: "20px",
-  },
-  sectionTitle: {
-    margin: 0,
-    fontSize: "1.2rem",
-    marginBottom: "10px",
-  },
-};
 
-export default HomePage;
+  /* Ítems de lista */
+  lineItem: {
+    background: "#ffffff",
+    margin: "8px 0",
+    padding: "10px",
+    borderRadius: "10px",
+    boxShadow: "inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff",
+    fontSize: "0.9rem",
+  },
+
+  /* Botón “Ver más” */
+  moreBtn: {
+    marginTop: "12px",
+    border: "none",
+    padding: "8px 24px",
+    borderRadius: "12px",
+    background: "#ffffff",
+    boxShadow: "4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff",
+    cursor: "pointer",
+  },
+
+  title: { margin: 0, marginBottom: "12px" },
+};

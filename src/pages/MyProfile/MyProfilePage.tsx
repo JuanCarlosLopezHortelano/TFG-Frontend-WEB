@@ -94,126 +94,104 @@ export function ProfilePage() {
   );
 }
 
-// Tipado explícito de estilos
+//* ----- ESTILOS ----- */
 const styles: Record<string, CSSProperties> = {
+  /* Fondo general gris clarísimo */
+  pageWrapper: {
+    background: "#f5f6f7",
+    minHeight: "100vh",
+    paddingTop: "40px",
+  },
+
+  /* *Caja* centrada como en LinkedIn */
   container: {
     display: "flex",
     flexDirection: "row",
-    gap: "20px",
-    padding: "20px",
-    minHeight: "100vh",
-    background: "#f1f1f1",
+    gap: "24px",
+    margin: "0 auto",          // ⬅️ centra el contenedor
+    maxWidth: "1200px",        // ⬅️ ancho máx
+    padding: "0 24px",
     fontFamily: "Arial, sans-serif",
   },
+
+  /* Columna izquierda / derecha idénticas, sólo cambiamos fondos */
   leftSection: {
     flex: 2,
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
+    gap: "24px",
   },
   rightSection: {
     flex: 1,
     display: "flex",
     flexDirection: "column",
-    gap: "20px",
+    gap: "24px",
   },
-  profileHeader: {
-    background: "#e0e0e0",
+
+  /* Tarjetas blancas con sombra neumórfica sutil */
+  card: {
+    background: "#ffffff",
     borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
-    padding: "20px",
+    boxShadow: "8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff",
+    padding: "24px",
+  },
+
+  /* Encabezado de perfil ― igual fondo blanco */
+  profileHeader: {
+    background: "#ffffff",
+    borderRadius: "16px",
+    boxShadow: "8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff",
+    padding: "24px",
     display: "flex",
     alignItems: "center",
     gap: "20px",
   },
+
+  /* Resto sin cambios, solo actualizamos el color de los minitarjetones */
+  activityItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    background: "#ffffff",
+    margin: "12px 0",
+    padding: "12px",
+    borderRadius: "10px",
+    boxShadow: "inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff",
+  },
+
+  calendar: { background: "#ffffff", borderRadius: "10px" },
+  calendarDayCell: {
+    background: "#ffffff",
+    boxShadow: "inset 1px 1px 3px #d1d9e6, inset -1px -1px 3px #ffffff",
+    padding: "6px 0",
+    borderRadius: "6px",
+    textAlign: "center",
+  },
+
+  /* Imagen, títulos, etc. se mantienen */
   profileImage: {
     width: "120px",
     height: "120px",
     borderRadius: "50%",
     objectFit: "cover",
-    boxShadow: "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
+    boxShadow: "inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff",
   },
-  profileName: {
-    margin: 0,
-    fontSize: "1.5rem",
-  },
-  profileRating: {
-    margin: "5px 0",
-    fontWeight: "bold",
-    color: "#666",
-  },
-  profileTagline: {
-    margin: 0,
-    color: "#777",
-  },
-  card: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
-    padding: "20px",
-  },
-  cardTitle: {
-    margin: 0,
-    marginBottom: "10px",
-    fontSize: "1.2rem",
-  },
-  activityItem: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    background: "#e0e0e0",
-    margin: "10px 0",
-    padding: "10px",
-    borderRadius: "8px",
-    boxShadow: "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
-  },
-  activityDate: {
-    fontSize: "0.9rem",
-    color: "#666",
-  },
-  activityPay: {
-    color: "#4A4A4A",
-  },
-  calendar: {
-    background: "#e0e0e0",
-    borderRadius: "8px",
-  },
-  calendarMonth: {
-    margin: 0,
-    textAlign: "center",
-    marginBottom: "10px",
-  },
-  calendarGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(7, 1fr)",
-    gap: "5px",
-  },
-  calendarHeaderCell: {
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  calendarDayCell: {
-    background: "#e0e0e0",
-    padding: "8px 0",
-    borderRadius: "8px",
-    boxShadow: "inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff",
-    textAlign: "center",
-  },
-  recommendedUser: {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-    marginBottom: "10px",
-  },
+  profileName: { margin: 0, fontSize: "1.5rem" },
+  profileRating: { margin: "6px 0", fontWeight: "bold", color: "#666" },
+  profileTagline: { margin: 0, color: "#777" },
+  cardTitle: { margin: 0, marginBottom: "12px", fontSize: "1.2rem" },
+
+  calendarMonth: { margin: 0, textAlign: "center", marginBottom: "10px" },
+  calendarGrid: { display: "grid", gridTemplateColumns: "repeat(7,1fr)", gap: "4px" },
+  calendarHeaderCell: { fontWeight: "bold", textAlign: "center" },
+
+  recommendedUser: { display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" },
   recommendedUserImg: {
     width: "40px",
     height: "40px",
     borderRadius: "50%",
     objectFit: "cover",
-    boxShadow: "inset 1px 1px 2px #bebebe, inset -1px -1px 2px #ffffff",
+    boxShadow: "inset 1px 1px 3px #d1d9e6, inset -1px -1px 3px #ffffff",
   },
-  recommendedUserName: {
-    margin: 0,
-    fontWeight: "bold",
-  },
+  recommendedUserName: { margin: 0, fontWeight: "bold" },
 };
