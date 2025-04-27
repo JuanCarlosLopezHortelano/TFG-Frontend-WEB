@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Tag, Card } from 'antd';
 import type { CSSProperties } from 'react';
 
