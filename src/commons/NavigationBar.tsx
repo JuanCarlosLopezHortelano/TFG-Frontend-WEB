@@ -48,9 +48,9 @@ export default function NavBar() {
           <AiOutlinePlusSquare size={24} />
           <span style={styles.iconLabel}>Crear</span>
         </NavLink>
-        <NavLink to="/index" style={styles.iconLink}>
+        <NavLink to="/myProfile" style={styles.iconLink}>
           <RiDashboardLine size={24} />
-          <span style={styles.iconLabel}>Index</span>
+          <span style={styles.iconLabel}>Mi Perfil</span>
         </NavLink>
       </nav>
     </header>
