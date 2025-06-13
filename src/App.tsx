@@ -9,6 +9,7 @@ import CreateTaskWizard from "./pages/CreateTask/CreateTaskWizard";
 import { WizardProvider } from "./pages/CreateTask/TaskDraftContext"; // Adjust the path as needed
 import MisPostulacionesPage from "./pages/MisPostulacionesPage/MisPostulacionesPage";
 import TrabajosRequeridosPage from "./pages/TrabajosRequeridos/TrabajosRequeridosPage";
+import CalendarPage from './pages/CalendarPage/CalendarPage';
 
 /*
 // Ejemplos de componentes para cada sección
@@ -88,6 +89,7 @@ function App() {
           <Route path="/trabajosrequeridos" element={<TrabajosRequeridosPage />} />
           <Route path="/buscador" element={<SearchPage />} />
           <Route path="/perfil" element={<ProfilePage />} />
+          <Route path="/calendario" element={<CalendarPage />} />
 
           {/* Wizard multi‑step */}
           <Route

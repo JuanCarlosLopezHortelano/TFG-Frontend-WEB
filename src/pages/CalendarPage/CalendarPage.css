@@ -1,0 +1,5 @@
+/* src/pages/CalendarPage.css */
+.wrapper{max-width:1200px;margin:40px auto;display:flex;gap:32px}
+.sidebar{width:260px;background:#fff;border-radius:18px;
+         box-shadow:8px 8px 16px #d1d9e6,-8px -8px 16px #fff;
+         padding:24px;display:flex;flex-direction:column;gap:16px}
