@@ -1,20 +1,41 @@
 import { CSSProperties, useState } from "react";
 
+interface Task {
+  title: string;
+  loc: string;
+  cat: string;
+  pay: string;
+  desc: string;
+}
+
 type Tab = "todo" | "personas" | "tareas";
 
 export default function SearchPage() {
   const [tab, setTab] = useState<Tab>("todo");
   const [location, setLocation] = useState("Todas");
   const [category, setCategory] = useState("Todas");
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
   /* --- Datos ficticios --- */
   const people = [
     { name: "Alberto García Aparicio", role: "Ingeniero informático", loc: "Albacete" },
     { name: "Mónica Sánchez Ruiz", role: "PMO", loc: "Sevilla" },
   ];
-  const tasks = [
-    { title: "Camarero/a para evento", loc: "Madrid", cat: "Eventos", pay: "12 €/h" },
-    { title: "Repartidor tarde", loc: "Valencia", cat: "Logística", pay: "10 €/h" },
+  const tasks: Task[] = [
+    {
+      title: "Camarero/a para evento",
+      loc: "Madrid",
+      cat: "Eventos",
+      pay: "12 €/h",
+      desc: "Servicio de catering para un congreso corporativo.",
+    },
+    {
+      title: "Repartidor tarde",
+      loc: "Valencia",
+      cat: "Logística",
+      pay: "10 €/h",
+      desc: "Entrega de paquetería en horario de tarde.",
+    },
   ];
 
   /* --- Filtro simple --- */
@@ -108,7 +129,12 @@ export default function SearchPage() {
                     <strong>{t.title}</strong><br/>
                     <span style={styles.personSubtitle}>{t.loc} · {t.pay}</span>
                   </div>
-                  <button style={styles.connectBtn}>Ver</button>
+                  <button
+                    style={styles.connectBtn}
+                    onClick={() => setSelectedTask(t)}
+                  >
+                    Ver
+                  </button>
                 </div>
               ))}
               <button style={styles.seeAllBtn}>Ver todas las tareas</button>
@@ -118,15 +144,31 @@ export default function SearchPage() {
 
         {/* --------- SIDEBAR --------- */}
         <aside style={styles.sideCol}>
-          <div style={styles.card}>
-            <h3 style={styles.cardTitle}>Recomendaciones</h3>
-            {["Boeing","Airbus Defence & Space","GE Aerospace"].map(r=>(
-              <div key={r} style={styles.recItem}>
-                <img src="https://via.placeholder.com/36" style={styles.avatar}/>
-                <span>{r}</span>
-              </div>
-            ))}
-          </div>
+          {selectedTask ? (
+            <div style={styles.card}>
+              <h3 style={styles.cardTitle}>{selectedTask.title}</h3>
+              <p style={styles.personSubtitle}>
+                {selectedTask.loc} · {selectedTask.pay}
+              </p>
+              <p style={styles.taskDesc}>{selectedTask.desc}</p>
+              <button
+                style={{ ...styles.connectBtn, marginTop: "12px" }}
+                onClick={() => setSelectedTask(null)}
+              >
+                Cerrar
+              </button>
+            </div>
+          ) : (
+            <div style={styles.card}>
+              <h3 style={styles.cardTitle}>Recomendaciones</h3>
+              {["Boeing","Airbus Defence & Space","GE Aerospace"].map(r=>(
+                <div key={r} style={styles.recItem}>
+                  <img src="https://via.placeholder.com/36" style={styles.avatar}/>
+                  <span>{r}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </aside>
       </main>
     </div>
@@ -171,4 +213,5 @@ const styles: Record<string, CSSProperties> = {
   seeAllBtn:{width:"100%",marginTop:"12px",border:"none",background:"#fff",padding:"10px",
              borderRadius:"12px",boxShadow:"4px 4px 8px #d1d9e6,-4px -4px 8px #fff",
              cursor:"pointer",fontWeight:600},
+  taskDesc:{fontSize:"0.9rem",marginTop:"8px",color:"#555"},
 };
