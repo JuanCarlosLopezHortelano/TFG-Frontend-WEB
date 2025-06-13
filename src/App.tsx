@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./commons/NavigationBar";
 import { Footer } from "./commons/Footer";
 import HomePage from "./pages/Home/HomePage";
-import  { ProfilePage } from "./pages/MyProfile/MyProfilePage";
+import { ProfilePage } from "./pages/MyProfile/MyProfilePage";
+import TaskListPage from "./pages/Tasks/TaskListPage";
 /*
 // Ejemplos de componentes para cada sección
 function HomePage() {
@@ -20,15 +21,6 @@ function MisPostulacionesPage() {
     <div style={styles.pageContainer}>
       <h1>Pruebas</h1>
       <p>Aquí verás tus postulaciones a trabajos.</p>
-    </div>
-  );
-}
-
-function TrabajosRequeridosPage() {
-  return (
-    <div style={styles.pageContainer}>
-      <h1>Trabajos Requeridos</h1>
-      <p>Listado de trabajos requeridos ofrecidos.</p>
     </div>
   );
 }
@@ -72,7 +64,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/mispostulaciones" element={<MisPostulacionesPage />} />
-            <Route path="/trabajosrequeridos" element={<TrabajosRequeridosPage />} />
+            <Route path="/trabajosrequeridos" element={<TaskListPage />} />
             <Route path="/creatrabajo" element={<CrearTrabajoPage />} />
             <Route path="/buscador" element={<BuscadorPage />} />
             <Route path="/perfil" element={<PerfilPage />} />
