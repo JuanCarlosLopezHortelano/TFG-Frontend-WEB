@@ -85,7 +85,7 @@ function App() {
       <div className="content-area">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/postulaciones" element={<MisPostulacionesPage />} />
+          <Route path="/mispostulaciones" element={<MisPostulacionesPage />} />
           <Route path="/trabajosrequeridos" element={<TrabajosRequeridosPage />} />
           <Route path="/buscador" element={<SearchPage />} />
           <Route path="/perfil" element={<ProfilePage />} />
