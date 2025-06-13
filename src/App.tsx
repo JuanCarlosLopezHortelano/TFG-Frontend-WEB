@@ -8,6 +8,7 @@ import SearchPage from "./pages/Home copy/SearchPage";
 import CreateTaskWizard from "./pages/CreateTask/CreateTaskWizard";
 import { WizardProvider } from "./pages/CreateTask/TaskDraftContext"; // Adjust the path as needed
 import JobDetailPage from "./pages/JobDetail/JobDetailPage";
+import UserDetailPage from "./pages/UserDetail/UserDetailPage";
 import MisPostulacionesPage from "./pages/MisPostulacionesPage/MisPostulacionesPage";
 import TrabajosRequeridosPage from "./pages/TrabajosRequeridos/TrabajosRequeridosPage";
 import CalendarPage from './pages/CalendarPage/CalendarPage';
@@ -92,6 +93,7 @@ function App() {
           <Route path="/perfil" element={<ProfilePage />} />
           <Route path="/calendario" element={<CalendarPage />} />
           <Route path="/job/:jobId" element={<JobDetailPage />} />
+          <Route path="/usuario/:userId" element={<UserDetailPage />} />
 
           {/* Wizard multi‑step */}
           <Route
