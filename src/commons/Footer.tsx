@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 
 export function Footer() {
   return (
@@ -19,7 +20,7 @@ export function Footer() {
   );
 }
 
-const styles = {
+const styles: Record<string, CSSProperties> = {
   footer: {
     background: "var(--background-color)",
     padding: "20px",
