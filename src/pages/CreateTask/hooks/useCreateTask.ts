@@ -1,19 +1,23 @@
 // src/hooks/useCreateTask.ts
 import { useState, useCallback } from 'react';
 import type { TaskDraft } from '../TaskDraftContext';
-import { createJob, Job } from '../services/jobService';
+import type { Job } from '../../../types/types';
+import { CreateJob } from '../../../application/jobs/createJob';
+import { JobApiRepository } from '../../../infrastructure/jobApiRepository';
+
+const createJobUseCase = new CreateJob(new JobApiRepository());
 
 export function useCreateTask(userId: string) {
   const [loading, setLoading] = useState(false);
-  const [error, setError]     = useState<string | null>(null);
-  const [job, setJob]         = useState<Job | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [job, setJob] = useState<Job | null>(null);
 
   const execute = useCallback(
     async (draft: TaskDraft) => {
       setLoading(true);
       setError(null);
       try {
-        const created = await createJob(draft, userId);
+        const created = await createJobUseCase.execute(draft, userId);
         setJob(created);
         return created;
       } catch (e: unknown) {
