@@ -1,7 +1,6 @@
 // src/hooks/useCreateTask.ts
 import { useState, useCallback } from 'react';
-import type { TaskDraft } from '../TaskDraftContext';
-import type { Job } from '../../../types/types';
+import type { TaskDraft, Job } from '../../../types/types';
 import { useRepositories } from '../../../infrastructure/RepositoryProvider';
 
 export function useCreateTask(userId: string) {

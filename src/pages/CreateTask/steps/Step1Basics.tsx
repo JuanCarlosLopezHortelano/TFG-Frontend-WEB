@@ -2,6 +2,7 @@
 import { Form, Input, Select, Button, Row, Col, InputNumber } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useWizard } from "../TaskDraftContext";
+import type { TaskDraft } from "../../../types/types";
 
 export default function Step1Basics() {
   const { draft, setDraft } = useWizard();
@@ -11,7 +12,7 @@ export default function Step1Basics() {
     <Form
       layout="vertical"
       initialValues={draft}
-      onFinish={(vals) => {
+      onFinish={(vals: TaskDraft) => {
         setDraft({ ...draft, ...vals });
         nav("../step-2");
       }}

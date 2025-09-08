@@ -1,18 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 // src/pages/CreateTask/TaskDraftContext.tsx
 import { createContext, useContext, useState, ReactNode } from 'react';
-import type { Point } from 'geojson';
-
-export interface TaskDraft {
-  title?:      string;
-  category?:   string;
-  rate?:       number;
-  duration?:   string;
-  date?:       string;
-  isFlexible?: boolean;
-  address?:    string;
-  area?:       Point & { radius: number };
-}
+import type { TaskDraft } from '../../types/types';
 
 type WizardCtx = {
   draft: TaskDraft;

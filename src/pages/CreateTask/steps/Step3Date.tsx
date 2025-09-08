@@ -26,8 +26,8 @@ export default function Step3Date() {
         label="Fecha / Hora"
         dependencies={['flexible']}
         rules={[
-          ({ getFieldValue }) => ({
-            required: !getFieldValue('flexible'),
+          ({ getFieldValue }: { getFieldValue: (name: string) => unknown }) => ({
+            required: !(getFieldValue('flexible') as boolean),
             message: 'Necesitas seleccionar una fecha',
           }),
         ]}

@@ -1,5 +1,5 @@
 // src/pages/CreateTask/steps/Step2Location.tsx
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Circle } from 'react-leaflet';
 import { Input, Button, message } from 'antd';
@@ -10,37 +10,17 @@ const DEFAULT_CENTER: [number, number] = [40.4167, -3.70325]; // Madrid
 const DEFAULT_ZOOM = 5;
 const CIRCLE_RADIUS = 1000; // en metros
 
-import type { Point } from 'geojson';
-
-export interface TaskDraft {
-  title?:      string;
-  category?:   string;
-  rate?:       number;
-  duration?:   string;
-  date?:       string;
-  isFlexible?: boolean;
-
-  // 👇 agregamos address
-  address?:    string;
-
-  // 👇 area es un Point + nuestro radio
-  area?:       Point & { radius: number };
-}
-
-
-
-
 export default function Step2Location() {
   const { draft, setDraft } = useWizard();
   const nav = useNavigate();
 
   // Estado local
-  const [query, setQuery] = useState(draft.address || '');
-  const [center, setCenter] = useState<[number, number] | null>(
-    draft.area?.coordinates
-      ? [draft.area.coordinates[1], draft.area.coordinates[0]]
-      : null
-  );
+  const [query, setQuery] = useState(draft.location || '');
+  const coords = draft.area?.coordinates as number[][] | undefined;
+  const initialCenter: [number, number] | null = coords
+    ? [coords[0][1], coords[0][0]]
+    : null;
+  const [center, setCenter] = useState<[number, number] | null>(initialCenter);
   const zoom = center ? 13 : DEFAULT_ZOOM;
 
   // Llama a Nominatim para geocodificar
@@ -57,12 +37,12 @@ export default function Step2Location() {
       // Guardamos en el draft la zona (Point + radius)
       setDraft({
         ...draft,
-        address: query.trim(),
-        area: { 
-          type: 'Point',
-          coordinates: [lonNum, latNum],
-          radius: CIRCLE_RADIUS
-        }
+        location: query.trim(),
+        area: {
+          type: 'Circle',
+          coordinates: [[lonNum, latNum]],
+          radius: CIRCLE_RADIUS,
+        },
       });
       message.success('Zona fijada automáticamente');
     } catch (err) {
@@ -84,7 +64,7 @@ export default function Step2Location() {
       <div className="flex gap-2 mb-4">
         <Input
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
           placeholder="Escribe una dirección o ciudad"
         />
         <Button type="primary" onClick={onSearch}>
