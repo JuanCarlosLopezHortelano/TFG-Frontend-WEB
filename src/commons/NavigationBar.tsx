@@ -3,7 +3,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AiFillHome, AiOutlineSearch, AiOutlinePlusSquare } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { MdDescription } from "react-icons/md";
-import { RiDashboardLine } from "react-icons/ri";
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -43,10 +42,6 @@ export default function NavBar() {
         <NavLink to="/creartarea/step-1" style={styles.iconLink}>
           <AiOutlinePlusSquare size={24} />
           <span style={styles.iconLabel}>Crear</span>
-        </NavLink>
-        <NavLink to="/index" style={styles.iconLink}>
-          <RiDashboardLine size={24} />
-          <span style={styles.iconLabel}>Index</span>
         </NavLink>
         <NavLink to="/perfil" style={styles.iconLink}>
           <FaUserCircle size={24} />
