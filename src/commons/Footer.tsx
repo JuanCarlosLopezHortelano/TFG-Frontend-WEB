@@ -1,7 +1,7 @@
 
 export function Footer() {
   return (
-    <footer >
+    <footer style={styles.footer}>
       <div style={styles.footerContent}>
         <p>© 2025 Mi TFG. Todos los derechos reservados.</p>
         <nav style={styles.footerNav}>
@@ -21,13 +21,16 @@ export function Footer() {
 
 const styles = {
   footer: {
-    background: "#e0e0e0",
+    background: "var(--background-color)",
     padding: "20px",
-    textAlign:  "center",
-    boxShadow: "inset 0 1px 3px rgba(0,0,0,0.1)",
+    textAlign: "center",
+    color: "#666",
+    fontSize: "0.875rem",
+    boxShadow: "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)",
+    borderRadius: "12px 12px 0 0",
   },
   footerContent: {
-    maxWidth: "800px",
+    maxWidth: "1128px",
     margin: "0 auto",
   },
   footerNav: {
@@ -36,7 +39,7 @@ const styles = {
   footerLink: {
     margin: "0 10px",
     textDecoration: "none",
-    color: "#333",
+    color: "var(--primary-color)",
   },
   socialMedia: {
     marginTop: "10px",

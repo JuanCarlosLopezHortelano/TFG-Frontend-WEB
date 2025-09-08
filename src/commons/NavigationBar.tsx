@@ -28,27 +28,76 @@ export default function NavBar() {
 
       {/* Iconos de navegación */}
       <nav style={styles.iconNav}>
-        <NavLink to="/" style={styles.iconLink} end>
+        <NavLink
+          to="/"
+          end
+          style={({ isActive }) => ({
+            ...styles.iconLink,
+            color: isActive ? "var(--primary-color)" : "#666",
+            borderBottom: isActive ? "2px solid var(--accent-color)" : "2px solid transparent",
+            boxShadow: isActive ? styles.iconLinkActive.boxShadow : styles.iconLink.boxShadow,
+          })}
+        >
           <AiFillHome size={24} />
           <span style={styles.iconLabel}>Inicio</span>
         </NavLink>
-        <NavLink to="/mispostulaciones" style={styles.iconLink}>
+        <NavLink
+          to="/mispostulaciones"
+          style={({ isActive }) => ({
+            ...styles.iconLink,
+            color: isActive ? "var(--primary-color)" : "#666",
+            borderBottom: isActive ? "2px solid var(--accent-color)" : "2px solid transparent",
+            boxShadow: isActive ? styles.iconLinkActive.boxShadow : styles.iconLink.boxShadow,
+          })}
+        >
           <MdDescription size={24} />
           <span style={styles.iconLabel}>Postulaciones</span>
         </NavLink>
-        <NavLink to="/perfil" style={styles.iconLink}>
+        <NavLink
+          to="/perfil"
+          style={({ isActive }) => ({
+            ...styles.iconLink,
+            color: isActive ? "var(--primary-color)" : "#666",
+            borderBottom: isActive ? "2px solid var(--accent-color)" : "2px solid transparent",
+            boxShadow: isActive ? styles.iconLinkActive.boxShadow : styles.iconLink.boxShadow,
+          })}
+        >
           <FaUserCircle size={24} />
           <span style={styles.iconLabel}>Perfil</span>
         </NavLink>
-        <NavLink to="/buscador" style={styles.iconLink}>
+        <NavLink
+          to="/buscador"
+          style={({ isActive }) => ({
+            ...styles.iconLink,
+            color: isActive ? "var(--primary-color)" : "#666",
+            borderBottom: isActive ? "2px solid var(--accent-color)" : "2px solid transparent",
+            boxShadow: isActive ? styles.iconLinkActive.boxShadow : styles.iconLink.boxShadow,
+          })}
+        >
           <AiOutlineSearch size={24} />
           <span style={styles.iconLabel}>Buscar</span>
         </NavLink>
-        <NavLink to="/creatrabajo" style={styles.iconLink}>
+        <NavLink
+          to="/creatrabajo"
+          style={({ isActive }) => ({
+            ...styles.iconLink,
+            color: isActive ? "var(--primary-color)" : "#666",
+            borderBottom: isActive ? "2px solid var(--accent-color)" : "2px solid transparent",
+            boxShadow: isActive ? styles.iconLinkActive.boxShadow : styles.iconLink.boxShadow,
+          })}
+        >
           <AiOutlinePlusSquare size={24} />
           <span style={styles.iconLabel}>Crear</span>
         </NavLink>
-        <NavLink to="/myProfile" style={styles.iconLink}>
+        <NavLink
+          to="/myProfile"
+          style={({ isActive }) => ({
+            ...styles.iconLink,
+            color: isActive ? "var(--primary-color)" : "#666",
+            borderBottom: isActive ? "2px solid var(--accent-color)" : "2px solid transparent",
+            boxShadow: isActive ? styles.iconLinkActive.boxShadow : styles.iconLink.boxShadow,
+          })}
+        >
           <RiDashboardLine size={24} />
           <span style={styles.iconLabel}>Mi Perfil</span>
         </NavLink>
@@ -57,57 +106,67 @@ export default function NavBar() {
   );
 }
 
+const neoShadow = "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)";
+const smallShadow = "4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)";
+const insetShadow = "inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light)";
+
 const styles: { [k: string]: React.CSSProperties } = {
   header: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",      // <-- Centra todos los hijos
-    background: "#ffffff",
-    padding: "8px 16px",
-    boxShadow: "8px 8px 16px #ebebeb, -8px -8px 16px #ffffff",
-    gap: "32px",                    // <-- Espacio uniforme entre cada bloque
+    justifyContent: "center",
+    background: "var(--background-color)",
+    padding: "0 24px",
+    boxShadow: neoShadow,
+    gap: "32px",
+    position: "sticky",
+    top: 0,
+    zIndex: 1000,
   },
   logo: {
     fontSize: "1.25rem",
     fontWeight: "bold",
     cursor: "pointer",
-    color: "#333",
+    color: "var(--primary-color)",
   },
   searchContainer: {
     display: "flex",
     alignItems: "center",
-    background: "#ffffff",
-    borderRadius: "20px",
-    padding: "4px 12px",
-    boxShadow: "inset 4px 4px 8px #ebebeb, inset -4px -4px 8px #ffffff",
-    width: "300px",
-    marginRight: "60px"
+    background: "var(--background-color)",
+    borderRadius: "12px",
+    padding: "0 8px",
+    width: "280px",
+    boxShadow: smallShadow,
   },
   searchInput: {
     border: "none",
     outline: "none",
     flex: 1,
-    fontSize: "1rem",
+    fontSize: "0.9rem",
     background: "transparent",
   },
   iconNav: {
     display: "flex",
     gap: "24px",
     alignItems: "center",
-    // marginLeft removed para que no empuje al final
   },
   iconLink: {
     display: "flex",
-    flexDirection: "column" ,
+    flexDirection: "column",
     alignItems: "center",
     textDecoration: "none",
-    color: "#555",
-    padding: "4px",
-    borderRadius: "8px",
-    transition: "background 0.2s",
+    color: "#666",
+    padding: "4px 8px",
+    fontSize: "0.75rem",
+    borderRadius: "12px",
+    boxShadow: smallShadow,
+    background: "var(--background-color)",
+    transition: "box-shadow 0.2s",
+  },
+  iconLinkActive: {
+    boxShadow: insetShadow,
   },
   iconLabel: {
-    fontSize: "0.7rem",
     marginTop: "4px",
   },
 };
