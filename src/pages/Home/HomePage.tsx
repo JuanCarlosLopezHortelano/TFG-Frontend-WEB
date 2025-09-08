@@ -65,21 +65,43 @@ function HomePage() {
 }
 
 // Estilos base (neumórficos)
+const neoCard: React.CSSProperties = {
+  background: "var(--background-color)",
+  borderRadius: "12px",
+  boxShadow: "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)",
+};
+
+const smallCard: React.CSSProperties = {
+  background: "var(--background-color)",
+  borderRadius: "12px",
+  boxShadow: "4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)",
+};
+
+const neoButton: React.CSSProperties = {
+  background: "var(--primary-color)",
+  color: "#ffffff",
+  border: "none",
+  borderRadius: "16px",
+  boxShadow: "4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)",
+  cursor: "pointer",
+};
+
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
-    background: "#f1f1f1",
-    fontFamily: "Arial, sans-serif",
+    background: "var(--background-color)",
+    fontFamily:
+      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
   },
   navbar: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    background: "#e0e0e0",
+    background: "#ffffff",
     padding: "10px 20px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
+    borderBottom: "1px solid #dcdcdc",
   },
   logo: {
     fontSize: "1.5rem",
@@ -94,10 +116,10 @@ const styles: { [key: string]: React.CSSProperties } = {
   searchInput: {
     width: "100%",
     padding: "8px 12px",
-    borderRadius: "10px",
-    border: "none",
-    boxShadow: "inset 3px 3px 5px #bebebe, inset -3px -3px 5px #ffffff",
+    borderRadius: "6px",
+    border: "1px solid #dcdcdc",
     outline: "none",
+    background: "#ffffff",
   },
   navIcons: {
     display: "flex",
@@ -107,10 +129,10 @@ const styles: { [key: string]: React.CSSProperties } = {
   navItem: {
     position: "relative",
     padding: "5px 10px",
-    borderRadius: "10px",
+    borderRadius: "6px",
     cursor: "pointer",
     fontSize: "0.9rem",
-    boxShadow: "3px 3px 5px #bebebe, -3px -3px 5px #ffffff",
+    color: "#666",
   },
   profile: {
     display: "flex",
@@ -136,9 +158,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: "20px",
   },
   categoriesContainer: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
+    ...neoCard,
     padding: "20px",
   },
   chipContainer: {
@@ -148,46 +168,32 @@ const styles: { [key: string]: React.CSSProperties } = {
     marginTop: "10px",
   },
   chip: {
-    background: "#e0e0e0",
+    ...smallCard,
     padding: "8px 12px",
-    borderRadius: "8px",
-    boxShadow: "4px 4px 8px #bebebe, -4px -4px 8px #ffffff",
     cursor: "pointer",
   },
   featuredJobs: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
+    ...neoCard,
     padding: "20px",
   },
   jobCard: {
-    background: "#e0e0e0",
+    ...smallCard,
     margin: "10px 0",
     padding: "10px",
-    borderRadius: "8px",
-    boxShadow: "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
   },
   seeMoreButton: {
+    ...neoButton,
     marginTop: "10px",
     padding: "8px 16px",
-    borderRadius: "8px",
-    background: "#e0e0e0",
-    border: "none",
-    boxShadow: "4px 4px 8px #bebebe, -4px -4px 8px #ffffff",
-    cursor: "pointer",
   },
   commentsSection: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
+    ...neoCard,
     padding: "20px",
   },
   commentCard: {
-    background: "#e0e0e0",
+    ...smallCard,
     margin: "10px 0",
     padding: "10px",
-    borderRadius: "8px",
-    boxShadow: "4px 4px 8px #bebebe, -4px -4px 8px #ffffff",
   },
   commentText: {
     margin: 0,
@@ -199,22 +205,16 @@ const styles: { [key: string]: React.CSSProperties } = {
     gap: "20px",
   },
   topJobs: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
+    ...neoCard,
     padding: "20px",
   },
   sidebarCard: {
-    background: "#e0e0e0",
+    ...smallCard,
     margin: "10px 0",
     padding: "10px",
-    borderRadius: "8px",
-    boxShadow: "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
   },
   topWorkers: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
+    ...neoCard,
     padding: "20px",
   },
   sectionTitle: {

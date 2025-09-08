@@ -82,37 +82,41 @@ function App() {
 // Algunos estilos básicos (ajústalos para conseguir el efecto deseado)
 const styles = {
   appContainer: {
-    fontFamily: "Arial, sans-serif",
+    fontFamily:
+      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
     minHeight: "100vh",
     display: "flex",
     flexDirection: "column",
+    background: "var(--background-color)",
+    color: "#333",
   },
-  
   contentArea: {
     flex: 1,
-    padding: "20px",
-    background: "#f0f0f3",
+    padding: "24px",
   },
   pageContainer: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 60px #bebebe, -20px -20px 60px #ffffff",
-    padding: "20px",
+    background: "var(--background-color)",
+    borderRadius: "12px",
+    boxShadow: "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)",
+    padding: "24px",
     margin: "20px auto",
     maxWidth: "800px",
   },
   footer: {
-    padding: "10px",
-    textAlign: "center" ,
-    background: "#e0e0e0",
+    padding: "16px",
+    textAlign: "center",
+    background: "#ffffff",
+    borderTop: "1px solid #dcdcdc",
+    color: "#666",
+    boxShadow: "0 -1px 2px rgba(0,0,0,0.08)",
   },
   signOutButton: {
-    background: "#e0e0e0",
-    border: "none",
+    background: "#ffffff",
+    border: "1px solid #dcdcdc",
     outline: "none",
     padding: "10px 20px",
     borderRadius: "8px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
+    boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
     cursor: "pointer",
   },
 };

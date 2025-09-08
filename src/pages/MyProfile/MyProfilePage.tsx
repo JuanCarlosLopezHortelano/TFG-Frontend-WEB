@@ -95,6 +95,18 @@ export function ProfilePage() {
 }
 
 // Tipado explícito de estilos
+const neoCard: CSSProperties = {
+  background: "var(--background-color)",
+  borderRadius: "12px",
+  boxShadow: "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)",
+};
+
+const smallCard: CSSProperties = {
+  background: "var(--background-color)",
+  borderRadius: "12px",
+  boxShadow: "4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)",
+};
+
 const styles: Record<string, CSSProperties> = {
   container: {
     display: "flex",
@@ -102,8 +114,9 @@ const styles: Record<string, CSSProperties> = {
     gap: "20px",
     padding: "20px",
     minHeight: "100vh",
-    background: "#f1f1f1",
-    fontFamily: "Arial, sans-serif",
+    background: "var(--background-color)",
+    fontFamily:
+      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
   },
   leftSection: {
     flex: 2,
@@ -118,9 +131,7 @@ const styles: Record<string, CSSProperties> = {
     gap: "20px",
   },
   profileHeader: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
+    ...neoCard,
     padding: "20px",
     display: "flex",
     alignItems: "center",
@@ -131,7 +142,7 @@ const styles: Record<string, CSSProperties> = {
     height: "120px",
     borderRadius: "50%",
     objectFit: "cover",
-    boxShadow: "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
+    boxShadow: "4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)",
   },
   profileName: {
     margin: 0,
@@ -147,9 +158,7 @@ const styles: Record<string, CSSProperties> = {
     color: "#777",
   },
   card: {
-    background: "#e0e0e0",
-    borderRadius: "16px",
-    boxShadow: "20px 20px 40px #bebebe, -20px -20px 40px #ffffff",
+    ...neoCard,
     padding: "20px",
   },
   cardTitle: {
@@ -158,14 +167,12 @@ const styles: Record<string, CSSProperties> = {
     fontSize: "1.2rem",
   },
   activityItem: {
+    ...smallCard,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    background: "#e0e0e0",
     margin: "10px 0",
     padding: "10px",
-    borderRadius: "8px",
-    boxShadow: "inset 4px 4px 8px #bebebe, inset -4px -4px 8px #ffffff",
   },
   activityDate: {
     fontSize: "0.9rem",
@@ -175,8 +182,8 @@ const styles: Record<string, CSSProperties> = {
     color: "#4A4A4A",
   },
   calendar: {
-    background: "#e0e0e0",
-    borderRadius: "8px",
+    ...neoCard,
+    padding: "10px",
   },
   calendarMonth: {
     margin: 0,
@@ -193,10 +200,8 @@ const styles: Record<string, CSSProperties> = {
     textAlign: "center",
   },
   calendarDayCell: {
-    background: "#e0e0e0",
+    ...smallCard,
     padding: "8px 0",
-    borderRadius: "8px",
-    boxShadow: "inset 2px 2px 4px #bebebe, inset -2px -2px 4px #ffffff",
     textAlign: "center",
   },
   recommendedUser: {
@@ -210,7 +215,7 @@ const styles: Record<string, CSSProperties> = {
     height: "40px",
     borderRadius: "50%",
     objectFit: "cover",
-    boxShadow: "inset 1px 1px 2px #bebebe, inset -1px -1px 2px #ffffff",
+    boxShadow: "4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)",
   },
   recommendedUserName: {
     margin: 0,

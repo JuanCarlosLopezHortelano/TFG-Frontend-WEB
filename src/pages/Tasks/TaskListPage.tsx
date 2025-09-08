@@ -92,26 +92,46 @@ export default function TaskListPage() {
   );
 }
 
+const neoCard: React.CSSProperties = {
+  background: "var(--background-color)",
+  borderRadius: "12px",
+  boxShadow: "8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light)",
+};
+
+const smallCard: React.CSSProperties = {
+  background: "var(--background-color)",
+  borderRadius: "12px",
+  boxShadow: "4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)",
+};
+
+const neoButton: React.CSSProperties = {
+  background: "var(--primary-color)",
+  color: "#ffffff",
+  border: "none",
+  borderRadius: "8px",
+  boxShadow: "4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light)",
+  cursor: "pointer",
+};
+
 const styles: Record<string, React.CSSProperties> = {
   container: {
     padding: "20px",
+    background: "var(--background-color)",
+    fontFamily:
+      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
   },
   title: {
     textAlign: "center",
   },
   taskCard: {
-    background: "#e0e0e0",
+    ...smallCard,
     padding: "16px",
-    borderRadius: "8px",
     marginBottom: "10px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
   },
   applyButton: {
+    ...neoButton,
     marginTop: "8px",
     padding: "8px 12px",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
   },
   modalBackdrop: {
     position: "fixed",
@@ -125,10 +145,8 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: "center",
   },
   form: {
-    background: "#fff",
+    ...neoCard,
     padding: "20px",
-    borderRadius: "8px",
-    boxShadow: "8px 8px 16px #bebebe, -8px -8px 16px #ffffff",
     minWidth: "300px",
   },
   formTitle: {
@@ -156,19 +174,16 @@ const styles: Record<string, React.CSSProperties> = {
     gap: "8px",
   },
   cancelButton: {
-    background: "#ccc",
-    border: "none",
+    background: "transparent",
+    border: "1px solid #666",
     padding: "8px 12px",
     borderRadius: "6px",
     cursor: "pointer",
+    color: "#666",
   },
   submitButton: {
-    background: "#4caf50",
-    color: "white",
-    border: "none",
+    ...neoButton,
     padding: "8px 12px",
-    borderRadius: "6px",
-    cursor: "pointer",
   },
 };
 
