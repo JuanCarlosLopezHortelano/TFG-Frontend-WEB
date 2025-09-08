@@ -8,6 +8,7 @@ import outputs from "../amplify_outputs.json";
 import '@aws-amplify/ui-react/styles.css';
 import 'antd/dist/reset.css';   // v5: estilo base reseteado
 import { ConfigProvider } from 'antd';
+import { RepositoryProvider } from './infrastructure/RepositoryProvider';
 
 Amplify.configure(outputs);
 
@@ -23,7 +24,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   >
     <React.StrictMode>
     <Authenticator>
-      <App />
+      <RepositoryProvider>
+        <App />
+      </RepositoryProvider>
     </Authenticator>
   </React.StrictMode>
 

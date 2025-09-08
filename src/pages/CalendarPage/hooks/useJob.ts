@@ -1,30 +1,18 @@
 import { useEffect, useState } from 'react';
-
-export interface Job {
-  job_id: string;
-  title: string;
-  location: string;
-  rate: number;
-  duration: string;
-  date?: string;        // ISO 8601 ó undefined = tarea libre
-  isFlexible?: boolean; // para futuro
-}
-
-const STORAGE_KEY = 'taskio.jobs';
+import type { Task } from '../../../domain/Task';
+import { useRepositories } from '../../../infrastructure/RepositoryProvider';
 
 export function useJobs() {
-  const [jobs, setJobs] = useState<Job[]>(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? (JSON.parse(raw) as Job[]) : [];
-    } catch {
-      return [];
-    }
-  });
+  const { taskRepository } = useRepositories();
+  const [jobs, setJobs] = useState<Task[]>([]);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(jobs));
-  }, [jobs]);
+    taskRepository.getTasks().then(setJobs);
+  }, [taskRepository]);
+
+  useEffect(() => {
+    taskRepository.saveTasks(jobs);
+  }, [jobs, taskRepository]);
 
   return { jobs, setJobs };
 }

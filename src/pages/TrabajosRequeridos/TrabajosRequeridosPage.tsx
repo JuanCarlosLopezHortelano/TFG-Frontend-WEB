@@ -55,7 +55,7 @@ export default function TrabajosRequeridosPage() {
             <div key={t.id} style={styles.card}>
               <h4 style={styles.cardTitle}>{t.title}</h4>
               <p style={styles.cardText}>Ubicación: {t.location}</p>
-              <p style={styles.cardRate}>{t.rate} €/h</p>
+                <p style={styles.cardRate}>{t.rate} €/h</p>
               <button style={styles.btn}>Editar oferta</button>
             </div>
           ))}
@@ -68,7 +68,7 @@ export default function TrabajosRequeridosPage() {
             <div key={r.id} style={styles.smallCard}>
               <h5 style={styles.cardTitle}>{r.title}</h5>
               <p style={styles.cardText}>{r.location}</p>
-              <p style={styles.cardRate}>{r.rate} €/h</p>
+                <p style={styles.cardRate}>{r.rate} €/h</p>
             </div>
           ))}
         </aside>

@@ -19,12 +19,12 @@ export function NewJobModal({ open, onClose, onCreate }: {
     <Modal open={open} onClose={onClose}>
       <h3>Publicar nueva tarea</h3>
 
-      {["title","location","duration"].map(f=>(
-        <input key={f} placeholder={f} style={st.input}
-          value={form[f as keyof FormJob] as string}
-          onChange={e=>handleChange(f as any, e.target.value)}
-        />
-      ))}
+        {(["title","location","duration"] as (keyof FormJob)[]).map(f=>(
+          <input key={f} placeholder={f} style={st.input}
+            value={form[f] as string}
+            onChange={e=>handleChange(f, e.target.value)}
+          />
+        ))}
 
       <select style={st.input} value={form.category}
               onChange={e=>handleChange("category",e.target.value)}>

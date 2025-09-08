@@ -1,12 +1,12 @@
 // src/components/TaskCalendar.tsx
 import './TaskCalendar.css';
-import type { Job } from '../hooks/useJob';
+import type { Task } from '../../../domain/Task';
 import TaskCard from './TaskCard';
 
-export default function TaskCalendar({ jobs, setJobs }: { jobs: Job[]; setJobs(j: Job[]):void }) {
+export default function TaskCalendar({ jobs, setJobs }: { jobs: Task[]; setJobs(j: Task[]):void }) {
   const today=new Date(); const y=today.getFullYear(); const m=today.getMonth();
   const days= new Date(y,m+1,0).getDate();
-  const jobsByDay:Record<number,Job[]>={};
+    const jobsByDay:Record<number,Task[]>={};
   jobs.forEach(j=>{ if(j.date){const d=new Date(j.date).getDate(); (jobsByDay[d]=jobsByDay[d]||[]).push(j);} });
 
   return(

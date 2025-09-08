@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 // src/pages/CreateTask/TaskDraftContext.tsx
 import { createContext, useContext, useState, ReactNode } from 'react';
 import type { Point } from 'geojson';

@@ -1,19 +1,22 @@
 // src/hooks/useCreateTask.ts
 import { useState, useCallback } from 'react';
 import type { TaskDraft } from '../TaskDraftContext';
-import { createJob, Job } from '../services/jobService';
+import type { Job } from '../../../types/types';
+import { useRepositories } from '../../../infrastructure/RepositoryProvider';
 
 export function useCreateTask(userId: string) {
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState<string | null>(null);
   const [job, setJob]         = useState<Job | null>(null);
 
+  const { jobRepository } = useRepositories();
+
   const execute = useCallback(
     async (draft: TaskDraft) => {
       setLoading(true);
       setError(null);
       try {
-        const created = await createJob(draft, userId);
+        const created = await jobRepository.createJob(draft, userId);
         setJob(created);
         return created;
       } catch (e: unknown) {
@@ -27,7 +30,7 @@ export function useCreateTask(userId: string) {
         setLoading(false);
       }
     },
-    [userId]
+    [jobRepository, userId]
   );
 
   return { execute, loading, error, job };

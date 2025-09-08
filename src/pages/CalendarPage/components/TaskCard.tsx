@@ -1,9 +1,9 @@
-import type { Job } from '../hooks/useJob';
-import styles from './TaskCard.css';
+import type { Task } from '../../../domain/Task';
+import './TaskCard.css';
 
-interface Props {
-  job: Job;
-  onDragStart?: (j: Job) => void;
+  interface Props {
+    job: Task;
+    onDragStart?: (j: Task) => void;
   draggable?: boolean;
 }
 

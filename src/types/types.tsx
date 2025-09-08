@@ -36,8 +36,8 @@ export interface Job {
   longDescription?: string;
   category: string;
   location: string;
-  rate: number;               // €/h
-  duration: string;           // “4 h”
+  rate: number; // €/h
+  duration: string; // "4h"
   createdAt: string;
 
   rating?: number;
