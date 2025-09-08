@@ -1,10 +1,7 @@
 // src/hooks/useJobs.ts
 import { useState, useEffect } from 'react';
 import type { Job } from '../../../types/types';
-import { FetchJobs } from '../../../application/jobs/fetchJobs';
-import { JobApiRepository } from '../../../infrastructure/jobApiRepository';
-
-const fetchJobsUseCase = new FetchJobs(new JobApiRepository());
+import { fetchJobs } from '../../../api/jobs';
 
 export function useJobs() {
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -12,8 +9,7 @@ export function useJobs() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchJobsUseCase
-      .execute()
+    fetchJobs()
       .then(setJobs)
       .catch(e => setError(e instanceof Error ? e.message : 'Error'))
       .finally(() => setLoading(false));

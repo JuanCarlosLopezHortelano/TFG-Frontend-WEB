@@ -1,5 +1,4 @@
 import type { Job } from '../hooks/useJob';
-import styles from './TaskCard.css';
 
 interface Props {
   job: Job;

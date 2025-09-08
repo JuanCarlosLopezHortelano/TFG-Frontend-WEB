@@ -2,10 +2,7 @@
 import { useState, useCallback } from 'react';
 import type { TaskDraft } from '../TaskDraftContext';
 import type { Job } from '../../../types/types';
-import { CreateJob } from '../../../application/jobs/createJob';
-import { JobApiRepository } from '../../../infrastructure/jobApiRepository';
-
-const createJobUseCase = new CreateJob(new JobApiRepository());
+import { createJob } from '../../../api/jobs';
 
 export function useCreateTask(userId: string) {
   const [loading, setLoading] = useState(false);
@@ -17,7 +14,7 @@ export function useCreateTask(userId: string) {
       setLoading(true);
       setError(null);
       try {
-        const created = await createJobUseCase.execute(draft, userId);
+        const created = await createJob(draft, userId);
         setJob(created);
         return created;
       } catch (e: unknown) {

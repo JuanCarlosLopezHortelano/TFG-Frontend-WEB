@@ -8,7 +8,12 @@ export function NewJobModal({ open, onClose, onCreate }: {
   onCreate: (job: FormJob) => void;
 }) {
   const [form, setForm] = useState<FormJob>({
-    title:"", category:"Eventos", location:"", rate:12, duration:"4 h", description:""
+    title: '',
+    category: 'Eventos',
+    location: '',
+    rate: 12,
+    duration: '4 h',
+    description: '',
   });
 
   function handleChange<K extends keyof FormJob>(k: K, v: FormJob[K]) {
@@ -19,10 +24,13 @@ export function NewJobModal({ open, onClose, onCreate }: {
     <Modal open={open} onClose={onClose}>
       <h3>Publicar nueva tarea</h3>
 
-      {["title","location","duration"].map(f=>(
-        <input key={f} placeholder={f} style={st.input}
-          value={form[f as keyof FormJob] as string}
-          onChange={e=>handleChange(f as any, e.target.value)}
+      {(["title","location","duration"] as Array<keyof FormJob>).map(f => (
+        <input
+          key={f}
+          placeholder={f}
+          style={st.input}
+          value={form[f] as string}
+          onChange={e => handleChange(f, e.target.value)}
         />
       ))}
 

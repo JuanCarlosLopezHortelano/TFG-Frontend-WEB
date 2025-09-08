@@ -15,11 +15,7 @@
     "jsx": "react-jsx",
 
     "baseUrl": "./",
-    "paths": {
-      "@domain/*": ["src/domain/*"],
-      "@application/*": ["src/application/*"],
-      "@infrastructure/*": ["src/infrastructure/*"]
-    },
+    "paths": {},
 
     /* Linting */
     "strict": true,
